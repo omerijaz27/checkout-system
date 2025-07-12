@@ -17,7 +17,7 @@ type Checkout struct {
 	scannedItems map[string]int
 }
 
-// NewCheckout creates a new checkout instance with an empty item list.
+// NewCheckout creates a checkout instance with an empty scanned item list.
 func NewCheckout() *Checkout {
 	return &Checkout{
 		scannedItems: make(map[string]int),

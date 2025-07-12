@@ -59,7 +59,6 @@ func Test_Scan_MultipleSKUs(t *testing.T) {
 	co := newTestCheckout(t)
 
 	skus := []string{"A", "B", "A", "C", "B", "D"}
-
 	for _, sku := range skus {
 		err := co.Scan(sku)
 		if err != nil {
@@ -96,6 +95,7 @@ func Test_GetTotalPrice_EmptyCart(t *testing.T) {
 
 func Test_GetTotalPrice_SingleItem(t *testing.T) {
 	co := newTestCheckout(t)
+
 	err := co.Scan("C")
 	if err != nil {
 		t.Fatalf("expected no error, got %v", err)
@@ -113,6 +113,7 @@ func Test_GetTotalPrice_SingleItem(t *testing.T) {
 
 func Test_GetTotalPrice_WithOffer(t *testing.T) {
 	co := newTestCheckout(t)
+
 	skus := []string{"A", "A", "A"}
 	for _, sku := range skus {
 		err := co.Scan(sku)
@@ -133,6 +134,7 @@ func Test_GetTotalPrice_WithOffer(t *testing.T) {
 
 func Test_GetTotalPrice_OfferAndRemaining(t *testing.T) {
 	co := newTestCheckout(t)
+
 	skus := []string{"A", "A", "A", "A", "A"}
 	for _, sku := range skus {
 		err := co.Scan(sku)
@@ -173,6 +175,7 @@ func Test_GetTotalPrice_MixedItems(t *testing.T) {
 
 func Test_GetTotalPrice_InvalidSKUError(t *testing.T) {
 	co := newTestCheckout(t)
+
 	co.scannedItems["Z"] = 2
 
 	_, err := co.GetTotalPrice()
